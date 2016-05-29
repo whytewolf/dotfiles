@@ -1,7 +1,7 @@
 # Vim folder
 .netrwhist
-dotvim/backups
-dotvim/bundle
+vim/vim/backups
+vim/vim/bundle
 
 # powerline
 powerline
