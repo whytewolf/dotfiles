@@ -27,6 +27,17 @@ Plugin 'VundleVim/Vundle.vim'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
+
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'mileszs/ack.vim'                " Experimenting with ag, the silver searcher
+if executable('ag')
+	  let g:ackprg = 'ag --vimgrep'
+endif
+
+
+Plugin 'altercation/vim-colors-solarized'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,3 +52,66 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+set background=dark
+colorscheme solarized
+
+" ================ File types ================================
+
+set encoding=utf-8
+filetype on          " enables filetype detection
+filetype plugin on   " enables filetype specific pugins
+filetype indent on   " enables filetype detection for indenting
+syntax enable
+
+
+" ================ Lines and cursors  ========================
+"
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set gcr=a:blinkon0              "Disable cursor blink
+" Display tabs and trailing spaces visually
+set list listchars=tab:→\ ,trail:∙
+
+
+" ================ Turn Off Swap Files ==============
+"
+set noswapfile
+set nobackup
+set nowritebackup
+
+
+" ================ Persistent Undo ==================
+" " Keep undo history across sessions, by storing in file.
+" " Only works all the time.
+"
+let backupdir = expand('~/.vim/backups')
+if !isdirectory(backupdir)
+  call mkdir(backupdir)
+  endif
+  set undodir=~/.vim/backups
+  set undofile
+
+" ================ Indentation ======================
+"
+set autoindent
+set smartindent
+set smarttab
+
+"I'm a spaces guy
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+set nowrap
+set linebreak " Wrap lines at convenient points
+
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size  = 1
+
+
+" ================ Folds ============================
+" I like folding
+set foldenable        "fold by default
+set foldmethod=syntax
