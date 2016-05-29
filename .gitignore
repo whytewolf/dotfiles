@@ -1,0 +1,12 @@
+# Vim folder
+.netrwhist
+dotvim/backups
+dotvim/bundle
+
+# powerline
+powerline
+
+# fish
+fish_history
+fishd.*
+generated_completions
