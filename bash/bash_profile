@@ -1,5 +1,8 @@
 if [ -d ~/.bash_profile.d ]; then
-  source ~/.bash_profile.d/*
+  for i in ~/.bash_profile.d/*
+  do
+    source ${i}
+  done
 fi
 
 
