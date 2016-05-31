@@ -1,6 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+if empty(glob("~/.vim/bundle/Vundle.vim"))
+  call system('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
+endif
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -15,7 +19,11 @@ endif
 
 
 Plugin 'altercation/vim-colors-solarized'
+
+" syntax support
 Plugin 'keith/tmux.vim'
+Plugin 'saltstack/salt-vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 
 " All of your Plugins must be added before the following line
@@ -23,8 +31,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ================ Solarized ================================
-set background=dark
-colorscheme solarized
+if !empty(glob("~/.vim/bundle/vim-colors-solarized"))
+  set background=dark
+  colorscheme solarized
+endif
 
 " ================ File types ================================
 
