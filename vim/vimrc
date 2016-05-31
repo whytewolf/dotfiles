@@ -11,13 +11,20 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Navigation
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'christoomey/vim-tmux-navigator'
+
+
+" Search
 Plugin 'mileszs/ack.vim'                " Experimenting with ag, the silver searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 
+" colors
 Plugin 'altercation/vim-colors-solarized'
 
 " syntax support
@@ -25,6 +32,8 @@ Plugin 'keith/tmux.vim'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
+" Misc
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,6 +106,31 @@ let g:indent_guides_guide_size  = 1
 set foldenable        "fold by default
 set foldmethod=syntax
 
+
+" ================ NerdTree autocmd stuffss =============
+if !empty(glob("~/.vim/bundle/nerdtree"))
+  let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
+endif
+
+"================= Remaping =================
+" F1 Gbrowse
+nnoremap <F1> :Gbrowse<CR>
+"F2 line number toggle
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+" <F3> = Toggle NERDTree
+nnoremap <F3> :NERDTreeToggle<CR>
+" <F4> = Toggle paste mode
+set pastetoggle=<F4>
 
 "================= enable powerline ====================
 python from powerline.vim import setup as powerline_setup
