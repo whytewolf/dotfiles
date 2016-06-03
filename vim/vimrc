@@ -1,4 +1,9 @@
 set nocompatible              " be iMproved, required
+
+if &shell =~# 'fish$'   "This is a compatibility fix for fish-shell and plugins
+    set shell=sh
+endif
+
 filetype off                  " required
 
 if empty(glob("~/.vim/bundle/Vundle.vim"))
