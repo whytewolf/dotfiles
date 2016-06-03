@@ -36,6 +36,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'keith/tmux.vim'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'dag/vim-fish'
 
 " Misc
 Plugin 'tpope/vim-fugitive'

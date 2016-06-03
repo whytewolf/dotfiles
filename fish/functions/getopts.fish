@@ -1,0 +1,1 @@
+/Users/whytewolf/.config/fisherman/getopts/getopts.fish
