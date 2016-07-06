@@ -37,6 +37,13 @@ Plugin 'keith/tmux.vim'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
+Plugin 'fatih/vim-go'
+
+" some fancy things are being added here
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Konfekt/FastFold'
 
 " Misc
 Plugin 'tpope/vim-fugitive'
@@ -143,3 +150,5 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 set laststatus=2
+
+let g:neocomplete#enable_at_startup = 1

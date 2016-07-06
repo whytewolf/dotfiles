@@ -13,4 +13,5 @@ function openrc
   set -g -x OS_TENANT_NAME $OS_PROJECT_NAME
   set -g -x OS_PROJECT_DOMAIN_NAME "Default"
   set -g -x OS_REGION_NAME "WolfCloud"
+  set -g -x OS_IDENTITY_API_VERSION 3
 end

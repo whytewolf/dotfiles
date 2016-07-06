@@ -1,6 +1,8 @@
+set -x GOPATH $HOME/golang
+set -x GOROOT /usr/local/opt/go/libexec
 if status --is-interactive
   set PATH /usr/bin /bin /usr/sbin /sbin
-  set PATH $HOME/Applications /usr/local/bin $PATH
+  set PATH $HOME/Applications $GOPATH/bin $GOROOT/bin /usr/local/bin $PATH
 end
 
 if test -z "$TMUX"
@@ -11,6 +13,8 @@ set -x EDITOR vim
 
 set -e GREP_OPTIONS
 set -x GREP_COLOR "1;33"
+
+
 
 alias nerd 'vim +NERDTree'
 alias vundle 'vim +PluginUpdate +qall'
