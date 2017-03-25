@@ -40,9 +40,11 @@ Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
 
 " some fancy things are being added here
+if has("lua")
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+endif
 Plugin 'Konfekt/FastFold'
 Plugin 'Shougo/vimshell.vim'
 
@@ -146,6 +148,9 @@ nnoremap <F3> :NERDTreeToggle<CR>
 " <F4> = Toggle paste mode
 set pastetoggle=<F4>
 
+
+
+if has("lua")
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -182,7 +187,7 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
+endif
 
 "================= enable powerline ====================
 python from powerline.vim import setup as powerline_setup
@@ -190,6 +195,8 @@ python powerline_setup()
 python del powerline_setup
 set laststatus=2
 
+
+if has("lua")
 let g:neocomplete#enable_at_startup = 1
 
 " Disable AutoComplPop.
@@ -235,3 +242,6 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+endif
+
+hi Normal ctermbg=none
