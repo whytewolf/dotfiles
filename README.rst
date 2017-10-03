@@ -1,8 +1,6 @@
 dotfiles
 ========
 
-
-
 Setup
 -----
 
@@ -24,3 +22,10 @@ Vundle requires filetype to be off during setup portion of vim. however calling 
 you can get around this by always using vim directly instead of vi. [my perfered method] 
 
 git is setup for vi by default but this can be quickly changed with ``git config --global core.editor $(which vim)``
+
+Vundale Update
+--------------
+
+once you installed the vimrc you can quickly update your install vundle packages with
+``vim +PluginInstall +qall`` and update later with ``vim +PluginUpdate +qall``
+vim should run in most situations with this config. it is setup to block functionality that is not possable with the vim system. 
