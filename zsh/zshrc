@@ -6,6 +6,11 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 powerline-daemon -q
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
+#load functions
+for i in ~/.zsh/*
+  do 
+    . ${i}
+  done
 
 for i in ~/.zsh.local/*
   do
