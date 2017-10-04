@@ -1,0 +1,13 @@
+# python export for brew version of python on mac os x
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+
+#I like me some powerline, powerline setup for macos 
+powerline-daemon -q
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+
+for i in ~/.zsh.local/*
+  do
+    . ${i}
+  done
