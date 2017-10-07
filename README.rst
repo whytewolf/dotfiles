@@ -12,7 +12,7 @@ currently there is not an automated way to install these. however I will most li
 4. ln -sf ~/{{dotfilelocation}}/bash/bash_profile.d/powerline.{{os}} ~/.bash_profile.d/powerline
 4. ln -sf ~/{{dotfilelocation}}/bash/bash_profile ~/.bash_profile
 
-of coarse keep in mind you don't have to do any of these. just the ones you want.
+of course keep in mind you don't have to do any of these. just the ones you want.
 
 
 Fixes for some things
