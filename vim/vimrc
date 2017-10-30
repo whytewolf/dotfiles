@@ -253,3 +253,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 endif
 
 hi Normal ctermbg=none
+
+
+
+
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
