@@ -108,7 +108,7 @@ if !isdirectory(backupdir)
 " ================ Indentation ======================
 "
 set autoindent
-set smartindent
+"set smartindent
 set smarttab
 
 "I'm a spaces guy
