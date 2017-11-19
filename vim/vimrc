@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 
+
 if &shell =~# 'fish$'   "This is a compatibility fix for fish-shell and plugins
     set shell=sh
 endif
@@ -198,10 +199,19 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 endif
 
 "================= enable powerline ====================
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2
+
+if has("python")
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
+  set laststatus=2
+elseif has("python3")
+  python3 from powerline.vim import setup as powerline_setup
+  python3 powerline_setup()
+  python3 del powerline_setup
+  set laststatus=2
+endif
+
 
 
 if has("lua")
@@ -238,6 +248,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
