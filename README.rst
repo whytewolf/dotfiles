@@ -29,3 +29,10 @@ Vundale Update
 once you installed the vimrc you can quickly update your install vundle packages with
 ``vim +PluginInstall +qall`` and update later with ``vim +PluginUpdate +qall``
 vim should run in most situations with this config. it is setup to block functionality that is not possable with the vim system. 
+
+Oh-My-ZSH
+---------
+
+Currently I don't have an auto install for oh-my-zsh. it is in a TODO somewhere. but doesn't currently exist.
+what i suggest so far is to follow [this](https://gist.github.com/kevin-smets/8568070) guide. ignore the mac 
+centric parts if you are on linux.
