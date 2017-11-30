@@ -112,5 +112,5 @@ for i in ~/.zsh.local/*
   done
 
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv pyenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv pyenv battery status root_indicator background_jobs history time)
