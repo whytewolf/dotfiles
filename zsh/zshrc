@@ -114,3 +114,7 @@ for i in ~/.zsh.local/*
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv pyenv battery status root_indicator background_jobs history time)
+
+
+DEFAULT_USER=$USER
+POWERLEVEL9K_MODE='nerdfont-complete'
