@@ -43,6 +43,7 @@ Plugin 'altercation/vim-colors-solarized'
 
 " syntax support
 Plugin 'keith/tmux.vim'
+Plugin 'tmux-plugins/vim-tmux'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
