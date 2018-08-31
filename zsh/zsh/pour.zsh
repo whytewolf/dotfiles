@@ -4,8 +4,7 @@ function pour() {
   then
     brew_pour
   fi
-  vim +PluginInstall +qall
-  vim +PluginUpdate +qall
+  vundle_madness
 }
 
 function brew_pour() {
@@ -14,7 +13,13 @@ function brew_pour() {
   brew prune
 }
 
-function brew_status {
+function brew_status() {
   brew doctor
   brew missing
+}
+
+function vundle_madness() {
+  vim +PluginInstall +qall
+  vim +PluginUpdate +qall
+  vim +PluginClean +qall
 }
