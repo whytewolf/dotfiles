@@ -47,7 +47,6 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
-Plugin 'fatih/vim-go'
 
 " some fancy things are being added here
 if has("lua")

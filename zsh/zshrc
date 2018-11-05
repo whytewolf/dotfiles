@@ -3,10 +3,16 @@
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_AUTOCONNECT="true"
 ZSH_TMUX_FIXTERM="true"
-
-export TERM="screen-256color"
-
-
+#
+#export TERM="screen-256color"
+#export TERM='xterm-256color'
+if [[ `uname -a` == *'Microsoft'*  ]]
+then
+  export TERM='xterm-256color'
+else
+  export TERM='screen-256color'
+fi
+#
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.rbenv/bin:$HOME/bin:$HOME/.local/opt/pycharm/bin:$HOME/.local/bin:$PATH
@@ -133,4 +139,4 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv pyenv battery status root_indicator background_jobs history time)
 
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
