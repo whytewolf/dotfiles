@@ -80,7 +80,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  tmux
   git
   history
   pylint
@@ -129,10 +128,13 @@ for i in ~/.zsh/*
     . ${i}
   done
 
-for i in ~/.zsh.local/*
+if [[ -d ~/.zsh.local ]]
+then
+  for i in ~/.zsh.local/*
   do
     . ${i}
   done
+fi
 
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
