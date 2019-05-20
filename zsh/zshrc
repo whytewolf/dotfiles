@@ -18,9 +18,9 @@ fi
 export PATH=$HOME/.rbenv/bin:$HOME/bin:$HOME/.local/opt/pycharm/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-DEFAULT_USER=$USER
+#DEFAULT_USER=$USER
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_SHOW_CHANGESET="true"
 
@@ -85,9 +85,9 @@ plugins=(
   pylint
   python
   sudo
+  tmux
   zsh-autosuggestions
   zsh-syntax-highlighting
-  vagrant
 )
 
 source $ZSH/oh-my-zsh.sh
