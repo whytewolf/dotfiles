@@ -49,6 +49,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
+Plugin 'vim-syntastic/syntastic'
 
 " some fancy things are being added here
 Plugin 'Konfekt/FastFold'
@@ -130,8 +131,9 @@ set foldmethod=syntax
 
 
 " ================ NerdTree autocmd stuffss =============
+
 if !empty(glob("~/.vim/bundle/nerdtree"))
-  let g:NERDTreeIndicatorMapCustom = {
+  let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ "Modified"  : "✹",
       \ "Staged"    : "✚",
       \ "Untracked" : "✭",
@@ -172,3 +174,13 @@ endif
 
 hi Normal ctermbg=none
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
+
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
