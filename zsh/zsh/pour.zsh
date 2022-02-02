@@ -19,7 +19,7 @@ function brew_status() {
 }
 
 function vundle_madness() {
+  vim +PluginClean +qall
   vim +PluginInstall +qall
   vim +PluginUpdate +qall
-  vim +PluginClean +qall
 }

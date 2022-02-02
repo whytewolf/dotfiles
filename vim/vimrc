@@ -41,7 +41,10 @@ Plugin 'hashivim/vim-vaultproject'
 Plugin 'hashivim/vim-nomadproject'
 
 " colors
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'kyoz/purify', { 'rtp': 'vim' }
+Plugin 'sainnhe/edge'
+
 
 " syntax support
 Plugin 'keith/tmux.vim'
@@ -50,6 +53,7 @@ Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'sheerun/vim-polyglot'
 
 " some fancy things are being added here
 Plugin 'Konfekt/FastFold'
@@ -57,16 +61,32 @@ Plugin 'Shougo/vimshell.vim'
 
 " Misc
 Plugin 'tpope/vim-fugitive'
+Plugin 'jpalardy/vim-slime'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rbong/vim-flog'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ================ Solarized ================================
-if !empty(glob("~/.vim/bundle/vim-colors-solarized"))
-  set background=dark
-  colorscheme solarized
-endif
+
+"if !empty(glob("~/.vim/bundle/vim-colors-solarized"))
+"  set background=dark
+"  colorscheme solarized
+"endif
+
+" ================ purify ===================================
+"if !empty(glob("~/.vim/bundle/purify"))
+"  colorscheme purify
+"  set background=dark
+"  hi Normal guibg=#252834 ctermbg=234
+"ndif
+
+colorscheme edge
+set background=dark
+
 
 " ================ File types ================================
 
@@ -156,23 +176,26 @@ nnoremap <F3> :NERDTreeToggle<CR>
 " <F4> = Toggle paste mode
 set pastetoggle=<F4>
 
+nnoremap <F8> :SyntasticToggleMode<CR>
+nnoremap <F5> :SyntasticCheck<CR>
+
 
 "================= enable powerline ====================
 
-if has("python")
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-  set laststatus=2
-elseif has("python3")
-  silent! python3 from powerline.vim import setup as powerline_setup
-  python3 powerline_setup()
-  python3 del powerline_setup
-  set laststatus=2
-endif
+"if has("python")
+"  python from powerline.vim import setup as powerline_setup
+"  python powerline_setup()
+"  python del powerline_setup
+"  set laststatus=2
+"elseif has("python3")
+"  python3 from powerline.vim import setup as powerline_setup
+"  python3 powerline_setup()
+"  python3 del powerline_setup
+"  set laststatus=2
+"endif
 
 
-hi Normal ctermbg=none
+"hi Normal ctermbg=none
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
 
 
@@ -182,5 +205,18 @@ set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_pylint_args = "--rcfile=~/.pylintrc --disable=I"
+
+autocmd BufRead,BufNewFile *.md
+  \ setlocal spell spelllang=en_us
+
+
+"======================= vim-slime ================
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": "{last}"}
+
+"====================== vim-airline ===============
+let g:airline_powerline_fonts = 1
