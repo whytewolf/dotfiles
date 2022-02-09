@@ -92,6 +92,7 @@ plugins=(
 #  tmux
   zsh-autosuggestions
   autojump
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
