@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 
 
-if &shell =~# 'fish$'   "This is a compatibility fix for fish-shell and plugins
+if &shell =~# 'fish$'    "This is a compatibility fix for fish-shell and plugins
     set shell=sh
 endif
 
@@ -26,7 +26,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 
 " Search
-Plugin 'mileszs/ack.vim'                " Experimenting with ag, the silver searcher
+Plugin 'mileszs/ack.vim'            " Experimenting with ag, the silver searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
@@ -53,11 +53,15 @@ Plugin 'saltstack/salt-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'dag/vim-fish'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'sheerun/vim-polyglot'
+"Plugin 'sheerun/vim-polyglot'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+Plugin 'vim-scripts/VST'
 
 " some fancy things are being added here
 Plugin 'Konfekt/FastFold'
 Plugin 'Shougo/vimshell.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " Misc
 Plugin 'tpope/vim-fugitive'
@@ -65,10 +69,15 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rbong/vim-flog'
+Plugin 'lgalke/vim-compiler-vale'
+
+" RST support
+Bundle 'Rykka/riv.vim'
+Bundle 'Rykka/InstantRst'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin on    " required
 
 " ================ Solarized ================================
 
@@ -179,20 +188,9 @@ set pastetoggle=<F4>
 nnoremap <F8> :SyntasticToggleMode<CR>
 nnoremap <F5> :SyntasticCheck<CR>
 
-
-"================= enable powerline ====================
-
-"if has("python")
-"  python from powerline.vim import setup as powerline_setup
-"  python powerline_setup()
-"  python del powerline_setup
-"  set laststatus=2
-"elseif has("python3")
-"  python3 from powerline.vim import setup as powerline_setup
-"  python3 powerline_setup()
-"  python3 del powerline_setup
-"  set laststatus=2
-"endif
+nnoremap <F6> :exe "!tmux send -t 1 'pre-commit' Enter"<CR><CR>
+nnoremap <F7> :exe "!tmux send -t 1 'git add .' Enter"<CR><CR>
+" markdown settings
 
 
 "hi Normal ctermbg=none
@@ -210,8 +208,6 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_python_pylint_args = "--rcfile=~/.pylintrc --disable=I"
 
-autocmd BufRead,BufNewFile *.md
-  \ setlocal spell spelllang=en_us
 
 
 "======================= vim-slime ================
@@ -220,3 +216,9 @@ let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_
 
 "====================== vim-airline ===============
 let g:airline_powerline_fonts = 1
+
+
+"======================= instantRST ================
+let g:instant_rst_forever = 1
+let g:instant_rst_localhost_only = 0
+
