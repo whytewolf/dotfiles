@@ -70,6 +70,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rbong/vim-flog'
 Plugin 'lgalke/vim-compiler-vale'
+Plugin 'tpope/vim-obsession'
+Plugin 'dhruvasagar/vim-prosession'
+Plugin 'brooth/far.vim'
+Plugin 'vim-python/python-syntax'
 
 " RST support
 Bundle 'Rykka/riv.vim'
