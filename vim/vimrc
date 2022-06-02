@@ -95,10 +95,12 @@ filetype plugin on    " required
 "  colorscheme purify
 "  set background=dark
 "  hi Normal guibg=#252834 ctermbg=234
-"ndif
+"endif
 
-colorscheme edge
-set background=dark
+if !empty(glob("~/.vim/bundle/edge"))
+  colorscheme edge
+  set background=dark
+endif
 
 
 " ================ File types ================================
