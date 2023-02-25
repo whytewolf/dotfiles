@@ -5,111 +5,89 @@ if &shell =~# 'fish$'    "This is a compatibility fix for fish-shell and plugins
     set shell=sh
 endif
 
-filetype off                  " required
-
-if empty(glob("~/.vim/bundle/Vundle.vim"))
-  call system('git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
+
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " ================ Vundle plugins ================================
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 
 " Navigation
-Plugin 'scrooloose/nerdtree'
-Plugin 'benmills/vimux'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdtree' , { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] } "Loads only when opening NERDTree
+Plug 'benmills/vimux'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'christoomey/vim-tmux-navigator'
 
 
 " Search
-Plugin 'mileszs/ack.vim'            " Experimenting with ag, the silver searcher
+Plug 'mileszs/ack.vim'            " Experimenting with ag, the silver searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 
 " HashiVim Tools
-Plugin 'hashivim/vim-vagrant'
-Plugin 'hashivim/vim-consul'
-Plugin 'hashivim/vim-packer'
-Plugin 'hashivim/vim-terraform'
-Plugin 'hashivim/vim-vaultproject'
-Plugin 'hashivim/vim-nomadproject'
+Plug 'hashivim/vim-vagrant'
+Plug 'hashivim/vim-consul'
+Plug 'hashivim/vim-packer'
+Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-vaultproject'
+Plug 'hashivim/vim-nomadproject'
 
 " colors
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'kyoz/purify', { 'rtp': 'vim' }
-Plugin 'sainnhe/edge'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'sainnhe/edge'
 
 
 " syntax support
-Plugin 'keith/tmux.vim'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'saltstack/salt-vim'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'dag/vim-fish'
-Plugin 'vim-syntastic/syntastic'
-"Plugin 'sheerun/vim-polyglot'
-Plugin 'godlygeek/tabular'
-Plugin 'preservim/vim-markdown'
-Plugin 'vim-scripts/VST'
+Plug 'keith/tmux.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'saltstack/salt-vim'
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for' : ['jinja2']}
+Plug 'vim-syntastic/syntastic'
+"Plug 'sheerun/vim-polyglot'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown', { 'for' : ['markdown']} "Loads for markdown only
 
 " some fancy things are being added here
-Plugin 'Konfekt/FastFold'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'Konfekt/FastFold'
+Plug 'Shougo/vimshell.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Misc
-Plugin 'tpope/vim-fugitive'
-Plugin 'jpalardy/vim-slime'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rbong/vim-flog'
-Plugin 'lgalke/vim-compiler-vale'
-Plugin 'tpope/vim-obsession'
-Plugin 'dhruvasagar/vim-prosession'
-Plugin 'brooth/far.vim'
-Plugin 'vim-python/python-syntax'
+Plug 'tpope/vim-fugitive'
+Plug 'jpalardy/vim-slime'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'lgalke/vim-compiler-vale'
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
+Plug 'brooth/far.vim'
+Plug 'vim-python/python-syntax', { 'for' : ['python']}
 
 " RST support
-Bundle 'Rykka/riv.vim'
-Bundle 'Rykka/InstantRst'
+Plug 'Rykka/riv.vim'
+Plug 'Rykka/InstantRst'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin on    " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 
-" ================ Solarized ================================
-
-"if !empty(glob("~/.vim/bundle/vim-colors-solarized"))
-"  set background=dark
-"  colorscheme solarized
-"endif
-
-" ================ purify ===================================
-"if !empty(glob("~/.vim/bundle/purify"))
-"  colorscheme purify
-"  set background=dark
-"  hi Normal guibg=#252834 ctermbg=234
-"endif
-
-if !empty(glob("~/.vim/bundle/edge"))
-  colorscheme edge
-  set background=dark
-endif
+" ============= edge color scheme =======================
+colorscheme edge
+set background=dark
 
 
 " ================ File types ================================
 
 set encoding=utf-8
 filetype on          " enables filetype detection
-filetype plugin on   " enables filetype specific pugins
-filetype indent on   " enables filetype detection for indenting
-syntax enable
 
 
 " ================ Lines and cursors  ========================
@@ -167,19 +145,17 @@ set foldmethod=syntax
 
 " ================ NerdTree autocmd stuffss =============
 
-if !empty(glob("~/.vim/bundle/nerdtree"))
-  let g:NERDTreeGitStatusIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "✚",
-      \ "Untracked" : "✭",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "═",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "✗",
-      \ "Clean"     : "✔︎",
-      \ "Unknown"   : "?"
-      \ }
-endif
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 "================= Remaping =================
 " F1 Gbrowse

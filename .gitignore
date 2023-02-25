@@ -3,6 +3,8 @@
 vim/vim/backups
 vim/vim/bundle
 vim/vim/session
+vim/vim/plugged
+vim/vim/autoload
 
 # powerline
 powerline

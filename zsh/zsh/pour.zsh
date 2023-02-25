@@ -4,7 +4,7 @@ function pour() {
   then
     brew_pour
   fi
-  vundle_madness
+  vim_plug_madness
 }
 
 function brew_pour() {
@@ -18,8 +18,9 @@ function brew_status() {
   brew missing
 }
 
-function vundle_madness() {
-  vim +PluginClean +qall
-  vim +PluginInstall +qall
-  vim +PluginUpdate +qall
+function vim_plug_madness() {
+  vim +PlugClean +qall
+  vim +PlugInstall +qall
+  vim +PlugUpdate +qall
+  vim +PlugUpgrade +qall
 }
