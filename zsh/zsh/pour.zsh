@@ -5,6 +5,15 @@ function pour() {
     brew_pour
   fi
   vim_plug_madness
+  os=`lsb_release -i -s`
+  if [[ "$os" == "Ubuntu" ]]
+  then
+    ubuntu_pour
+  fi
+}
+
+function ubuntu_pour() {
+  sudo nala update
 }
 
 function brew_pour() {
